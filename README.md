@@ -104,15 +104,15 @@ We make an ASM file ( or library from it ) with RAM functions in RAM section **.
 to keep the compiler from crying and will be used for "**Dynamic Linking**"
 
 ```S
-#define API_CODEER 0xFEEDC0DE // it can just be zero, it is used here to hide information
+#define API_CODEER 0xFEEDC0DE ; it can just be zero, it is used here to hide information
 
 .globl millis
 .section .api_ram_code.millis
 .type  millis, %function
 .func  millis
 millis:
-    .long API_CODEER    // mean: just simple number
-    .long 0xAAC4FB6A    // mean: HASH32( "millis" ) this HASH is also in the above API_TABLE[]
+    .long API_CODEER    ; mean: just simple number
+    .long 0xAAC4FB6A    ; mean: HASH32( "millis" ) this HASH is also in the above API_TABLE[]
 .endfunc
 
 .globl micros
@@ -120,8 +120,8 @@ millis:
 .type  micros, %function
 .func  micros
 micros:
-    .long API_CODEER // mean: just simple number
-    .long 0x1C76F7B6 // mean: HASH32( "micros" )
+    .long API_CODEER ; mean: just simple number
+    .long 0x1C76F7B6 ; mean: HASH32( "micros" )
 .endfunc
 
 // etc all other shared functions
