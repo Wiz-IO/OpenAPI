@@ -104,7 +104,7 @@ We make an ASM file ( or library from it ) with RAM functions in RAM section **.
 to keep the compiler from crying and will be used for "**Dynamic Linking**"
 
 ```S
-#define API_CODEER 0xFEEDC0DE // it can just be null, it is used here to hide information
+#define API_CODEER 0xFEEDC0DE // it can just be zero, it is used here to hide information
 
 .globl millis
 .section .api_ram_code.millis
