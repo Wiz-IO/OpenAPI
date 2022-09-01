@@ -182,9 +182,9 @@ The examples in the folders have been tested with
 * Mediatek MT2503 - GSM GPRS SoC ( ARMv6 )
 
 Similarly OpenAPI is OpenCPU:<br>
-Chinese author - unknown,<br>
-It is used by Quectel - a manufacturer of GSM modules<br>
-Unfortunately - Closed Source with writing peculiarities and underdeveloped SDK over the years<br>
+* Chinese author - unknown,<br>
+* It is used by Quectel - a manufacturer of GSM modules<br>
+* Unfortunately - Closed Source with writing peculiarities and underdeveloped SDK over the years<br>
 
 
 >Here you can treat me to Coffee or Year Old Whisky :)
