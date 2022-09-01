@@ -38,5 +38,6 @@ The kernel loads the application somewhere in RAM and<br>
 the Dynamic Linker overwrites the GOT table with the absolute addresses of the shared functions<br>
 pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=**0x82001342** <-- real address
 
-Unfortunately, all this uses a lot of resources, and more detailed information can be found on the web
+Unfortunately, all this uses a lot of resources, and more detailed information can be found on the web<br>
+as example: https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries
 
