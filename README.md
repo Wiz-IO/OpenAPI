@@ -112,7 +112,7 @@ to keep the compiler from crying and will be used for "**Dynamic Linking**"
 .func  millis
 millis:
     .long API_CODEER    // mean: just simple number
-    .long 0xAAC4FB6A    // mean: HASH32( "millis" ) този HASH го има и в горната API_TABLE[]
+    .long 0xAAC4FB6A    // mean: HASH32( "millis" ) this HASH is also in the above API_TABLE[]
 .endfunc
 
 .globl micros
@@ -126,3 +126,9 @@ micros:
 
 // etc all other shared functions
 ```
+looks like **PLT**
+
+or binary RAM ARRAY looks like:<br>
+0xFEEDC0DE, 0xAAC4FB6A, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF - this last means section EOF<br>
+This RAM section is described in the linker script and has parameters API-BEGIN, API-END, API-SIZE, like a normal .DATA section<br>
+Why EOF - the compiler will remove the unused functions and we need it for the end of the array<br>
