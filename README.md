@@ -180,6 +180,7 @@ Resources:
 The examples in the folders have been tested with
 * Mediatek **MT2625** - GSM LPWA NB-IoT SoC ( ARMv7 Cortex M4 )
 * Mediatek MT2503 - GSM GPRS SoC ( ARMv6 )
+* Can be used with any ARM SoC modules...
 
 Similarly OpenAPI is OpenCPU:<br>
 * Chinese author - unknown,<br>
