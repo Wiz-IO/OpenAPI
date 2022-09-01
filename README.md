@@ -111,8 +111,8 @@ to keep the compiler from crying and will be used for "**Dynamic Linking**"
 .type  millis, %function
 .func  millis
 millis:
-    .long API_CODEER    ; mean: just simple number
-    .long 0xAAC4FB6A    ; mean: HASH32( "millis" ) this HASH is also in the above API_TABLE[]
+    .long API_CODEER ; mean: just simple number
+    .long 0xAAC4FB6A ; mean: HASH32( "millis" ) this HASH is also in the above API_TABLE[]
 .endfunc
 
 .globl micros
@@ -132,10 +132,10 @@ or binary RAM ARRAY looks like:<br>
 ```c
 0xFEEDC0DE, 0xAAC4FB6A, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF // this last means section EOF<br>
 ```
-This RAM section is described in the linker script and has parameters API-BEGIN, API-END, API-SIZE, like a normal .DATA section<br>
+This RAM section is described in the linker script and has parameters API-BEGIN, API-END, API-SIZE, like a normal **.data** section<br>
 Why EOF - the compiler will remove the unused functions and we need it for the end of the array<br>
 
-##Nothing complicated, right ?
+## Nothing complicated, right ?
 
 What the above ASM functions actually are?<br>
 **user millis: ldr.w ps, =(kernel millis address)**<br>
@@ -150,13 +150,17 @@ Compile --> ELF --> BIN --> UPLOAD ... for the above LED BLINK is about 400 byte
 
 **We're rebooting**<br>
 Kernel initializes the system and will attempt to start Userware located at USER-ROM and use USER-RAM allocated<br>
-at the beginning of the BIN file ( USER-ROM ) there is a **HEADER** with information about the Userware APP:<br>
+At the beginning of the BIN file ( USER-ROM ) there is a **HEADER** with information about the Userware Application:<br>
 **MAGIC, API-VERSION, .api_ram_code, .data, bss, entry-point**<br>
 The Kernel will check MAGIC and API-VERSION if the application is valid<br>
 and will initialize the **.api_ram_code**, .data, bss sections<br>
+
 so<br>
-We scan **.api_ram_code**, in this example: <br>
+
+We scan **.api_ram_code**, in this example:
+```c
 **0xFEEDC0DE, 0xAAC4FB6A**, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF<br>
+```
 if API_TABLE[i].hash == hash we overwrite **0xFEEDC0DE** with **0xF000F85F**(instruction) and replace **HASH** with the **real function address**<br>
 Now Userware is ready to start --> call entry-point --> Arduino blink or ... driveRoverAtMars()<br>
 
