@@ -46,6 +46,7 @@ Unfortunately, all this uses a lot of resources, and more detailed information c
 as example: https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries
 
 ## How to use this on "small" systems with limited resources<br>
-for example: ARM Cortex M4 with several megabytes of ROM & RAM<br>
-another example: a GSM LPWA NB-IoT module that integrates an Arduino Core, which is shared for use by Userware Arduino applications
+For example: ARM Cortex M4 with several megabytes of ROM & RAM<br>
+Another example: a GSM LPWA NB-IoT module that integrates an Arduino Core,<br>
+which is shared for use by Userware Arduino applications
 
