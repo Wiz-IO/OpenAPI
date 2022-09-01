@@ -189,5 +189,5 @@ Similarly OpenAPI is OpenCPU:<br>
 
 and sorry for my bad English...
 
->Here you can treat me to Coffee or Year Old Whisky :)
+>Here you can treat me to Coffee or 12 Year Old Whisky :)
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ESUP9LCZMZTD6)
