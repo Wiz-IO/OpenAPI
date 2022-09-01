@@ -30,6 +30,7 @@ got[2] = 0 ?
 got[3] = 0 ?
 ...
 ```
+![plt got](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/plt_got.png)
 and so your application compiles without errors, and the code looks like:<br>
 pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=0 <-- no address
 
