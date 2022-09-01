@@ -1,5 +1,5 @@
 # OpenAPI<br>
-_( will be more of an explanation than copy / paste code )_
+_( will be more of an explanation than copy / paste code and the association with Arduino is as an example application )_
 
 OpenAPI is the sharing of Kernel ( Firmware ) functions to Userware applications<br>
 or dynamically linking statically compiled applications<br>
