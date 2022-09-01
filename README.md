@@ -150,13 +150,30 @@ Compile --> ELF --> BIN --> UPLOAD ... for the above LED BLINK is about 400 byte
 
 **We're rebooting**<br>
 Kernel initializes the system and will attempt to start Userware located at USER-ROM and use USER-RAM allocated<br>
-at the beginning of the BIN file ( USER-ROM ) there is a HEADER with information about the Userware APP:<br>
-MAGIC, API-VERSION, .api_ram_code, .data, bss, entry-point<br>
-It will check MAGIC and API-VERSION if the application is valid<br>
-and will initialize the .api_ram_code, .data, bss sections<br>
+at the beginning of the BIN file ( USER-ROM ) there is a **HEADER** with information about the Userware APP:<br>
+**MAGIC, API-VERSION, .api_ram_code, .data, bss, entry-point**<br>
+The Kernel will check MAGIC and API-VERSION if the application is valid<br>
+and will initialize the **.api_ram_code**, .data, bss sections<br>
 so<br>
-we scan .api_ram_code, in this case 0xFEEDC0DE, 0xAAC4FB6A, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF<br>
-if API_TABLE[i].hash == hash we overwrite 0xFEEDC0DE with 0xF000F85F and replace HASH with the real function code<br>
+We scan **.api_ram_code**, in this example: <br>
+**0xFEEDC0DE, 0xAAC4FB6A**, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF<br>
+if API_TABLE[i].hash == hash we overwrite **0xFEEDC0DE** with **0xF000F85F**(instruction) and replace **HASH** with the **real function address**<br>
 Now Userware is ready to start --> call entry-point --> Arduino blink or ... driveRoverAtMars()<br>
 
-Compile --> ELF --> BIN --> UPLOAD ... for the above LED BLINK is about 400 bytes
+**Basic and simple !!!**
+
+Resources:
+* RAM & ROM 8 bytes for shared functions ( Arm or Thumb32 )
+* Kernel control
+* Hidden information
+* Option for signed applications
+* etc
+
+The examples in the folders have been tested with
+* Mediatek MT2625 - GSM LPWA NB-IoT SoC ( ARMv7 Cortex M4 )
+* Mediatek MT2503 - GSM GPRS SoC ( ARMv6 )
+
+Similarly OpenAPI is OpenCPU:<br>
+Chinese author - unknown,<br>
+It is used by Quectel - a manufacturer of GSM modules<br>
+Unfortunately - Closed Source with writing peculiarities and underdeveloped SDK over the years<br>
