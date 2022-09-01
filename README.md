@@ -66,7 +66,7 @@ API_TABLE = {
     ...
 }
 ```
-looks like GOT table
+looks like **GOT table**
 
 We will use HASH with which we will search the addresses,<br>
 and the trick with HASH is that we don't care about the string name of the functions<>
@@ -79,4 +79,50 @@ uint32_t getFunctionAddressByHash( uint32_t hash ) // note: I will write interac
             return API_TABLE[i].function 
     or return error
 }
+```
+The Kernel only needs a procedure to start the Userware application - we'll come back to that later
+
+##Userware Application
+```c
+int main(void)
+{
+    static int T = 0;
+    pinMode(LED, OUTPUT); 
+    while (true)
+    {
+        digitalWrite(LED, ++T & 1);
+        delay(250); 
+    }
+}
+```
+Static User Space is allocated for these applications - USER-ROM & USER-RAM, free space somewhere in system memory<br>
+where in USER-ROM we will upload the compiled BIN file<br>
+and note - the system does not use MMU ( Memory management unit ) - there are no such resources.<br>
+**Userware is just an extension of Firmware**, but Userware doesn't know where the shared functions are<br>
+
+We make an ASM file ( or library from it ) with RAM functions in RAM section **.api_ram_code**
+to keep the compiler from crying and will be used for "**Dynamic Linking**"
+
+```asm
+#define API_CODEER 0xFEEDC0DE // it can just be null, it is used here to hide information
+
+.globl millis
+.section .api_ram_code.millis
+.type  millis, %function
+.func  millis
+millis:
+    .long API_CODEER    // mean: just simple number
+    .long 0xAAC4FB6A    // mean: HASH32( "millis" ) този HASH го има и в горната API_TABLE[]
+.endfunc
+
+.globl micros
+.section .api_ram_code.micros
+.type  micros, %function
+.func  micros
+micros:
+    .long API_CODEER // mean: just simple number
+    .long 0x1C76F7B6 // mean: HASH32( "micros" )
+.endfunc
+
+// etc all other shared functions
 ```
