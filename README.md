@@ -69,7 +69,7 @@ API_TABLE = {
 looks like **GOT table**
 
 We will use HASH with which we will search the addresses,<br>
-and the trick with HASH is that we don't care about the string name of the functions<>
+and the trick with HASH is that we don't care about the string name of the functions<br>
 We also have a function:<br>
 ```c
 uint32_t getFunctionAddressByHash( uint32_t hash ) // note: I will write interactively to make it understandable
