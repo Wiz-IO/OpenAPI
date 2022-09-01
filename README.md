@@ -132,7 +132,7 @@ or binary RAM ARRAY looks like:<br>
 ```c
 0xFEEDC0DE, 0xAAC4FB6A, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF // this last means section EOF<br>
 ```
-This RAM section is described in the linker script and has parameters API-BEGIN, API-END, API-SIZE, like a normal **.data** section<br>
+This RAM section is described in the [linker script](https://github.com/Wiz-IO/OpenAPI/blob/main/example-user/lib/cpp.ld#L79) and has parameters API-BEGIN, API-END, API-SIZE, like a normal **.data** section<br>
 Why EOF - the compiler will remove the unused functions and we need it for the end of the array<br>
 
 ![asm](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/asm.jpg)
