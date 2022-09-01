@@ -100,7 +100,7 @@ where in USER-ROM we will upload the compiled BIN file<br>
 and note - the system does not use MMU ( Memory management unit ) - there are no such resources.<br>
 **Userware is just an extension of Firmware**, but Userware doesn't know where the shared functions are<br>
 
-We make an ASM file ( or library from it ) with RAM functions in RAM section **.api_ram_code**
+We make an ASM file ( or library from it ) with RAM functions in RAM section **.api_ram_code**<br>
 to keep the compiler from crying and will be used for "**Dynamic Linking**"
 
 ```S
