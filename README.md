@@ -51,3 +51,32 @@ For example: ARM Cortex M4 with several megabytes of ROM & RAM<br>
 Another example: a GSM LPWA NB-IoT module that integrates an Arduino Core,<br>
 which is shared for use by Userware Arduino applications
 
+In Kernel we create a simple table (array) with records:
+```c
+API_TABLE = {
+    { 0x10A9DD60, analogRead        }, // mean: HASH32( "function_name" ), adddress of function_name()
+    { 0x1C76F7B6, micros            },
+    { 0x1F55D5A2, delay             },
+    { 0x20F099D4, analogWrite       },
+    { 0x6A50FC40, delayMicroseconds },
+    { 0x6A973CA4, pinMode           },
+    { 0x73501778, digitalRead       },
+    { 0xAAC4FB6A, millis            },
+    { 0xC9AE709C, digitalWrite      },
+    ...
+}
+```
+looks like GOT table
+
+We will use HASH with which we will search the addresses,<br>
+and the trick with HASH is that we don't care about the string name of the functions<>
+We also have a function:<br>
+```c
+uint32_t getFunctionAddressByHash( uint32_t hash ) // note: I will write interactively to make it understandable
+{ 
+    for everything from от API_TABLE[]: 
+        if API_TABLE[i].hash == hash 
+            return API_TABLE[i].function 
+    or return error
+}
+```
