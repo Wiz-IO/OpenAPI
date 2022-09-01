@@ -82,7 +82,7 @@ uint32_t getFunctionAddressByHash( uint32_t hash ) // note: I will write interac
 ```
 The Kernel only needs a procedure to start the Userware application - we'll come back to that later
 
-##Userware Application
+## Userware Application
 ```c
 int main(void)
 {
