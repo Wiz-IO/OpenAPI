@@ -30,7 +30,7 @@ got[2] = 0 ?
 got[3] = 0 ?
 ...
 ```
-![plt got](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/plt_got_1.png)
+![plt got before](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/plt_got-1.png)
 
 and so your application compiles without errors, and the code looks like:<br>
 pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=0 <-- no address
@@ -40,7 +40,7 @@ The kernel loads the application somewhere in RAM and<br>
 the Dynamic Linker overwrites the GOT table with the absolute addresses of the shared functions<br>
 pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=**0x82001342** <-- real address
 
-![plt got](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/plt_got_2.png)
+![plt got after](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/plt_got-2.png)
 
 Unfortunately, all this uses a lot of resources, and more detailed information can be found on the web<br>
 as example: https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries
