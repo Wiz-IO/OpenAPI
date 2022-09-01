@@ -126,9 +126,11 @@ micros:
 
 // etc all other shared functions
 ```
-looks like **PLT**
+looks like **PLT table**
 
 or binary RAM ARRAY looks like:<br>
-0xFEEDC0DE, 0xAAC4FB6A, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF - this last means section EOF<br>
+```c
+0xFEEDC0DE, 0xAAC4FB6A, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF // this last means section EOF<br>
+```
 This RAM section is described in the linker script and has parameters API-BEGIN, API-END, API-SIZE, like a normal .DATA section<br>
 Why EOF - the compiler will remove the unused functions and we need it for the end of the array<br>
