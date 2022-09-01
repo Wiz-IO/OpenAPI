@@ -31,6 +31,7 @@ got[3] = 0 ?
 ...
 ```
 ![plt got](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/plt_got.png)
+
 and so your application compiles without errors, and the code looks like:<br>
 pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=0 <-- no address
 
@@ -41,4 +42,8 @@ pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=**0x82001342** <-- r
 
 Unfortunately, all this uses a lot of resources, and more detailed information can be found on the web<br>
 as example: https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries
+
+**How to use this on "small" systems with limited resources**
+for example: ARM COrtex M4 with several megabytes of ROM & RAM<br>
+another example: a GSM LPWA NB-IoT module that integrates an Arduino Core, which is shared for use by Userware Arduino applications
 
