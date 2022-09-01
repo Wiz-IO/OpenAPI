@@ -103,7 +103,7 @@ and note - the system does not use MMU ( Memory management unit ) - there are no
 We make an ASM file ( or library from it ) with RAM functions in RAM section **.api_ram_code**
 to keep the compiler from crying and will be used for "**Dynamic Linking**"
 
-```asm
+```S
 #define API_CODEER 0xFEEDC0DE // it can just be null, it is used here to hide information
 
 .globl millis
