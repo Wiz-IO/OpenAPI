@@ -43,7 +43,7 @@ pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=**0x82001342** <-- r
 
 ![plt got after](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/plt_got-2.png)
 
-Unfortunately, all this uses a lot of resources, and more detailed information can be found on the web<br>
+**Unfortunately, all this uses a lot of resources**, and more detailed information can be found on the web<br>
 as example: https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries
 
 ## How to use this on "small" systems with limited resources<br>
