@@ -155,11 +155,11 @@ Kernel initializes the system and will attempt to [start](https://github.com/Wiz
 At the beginning of the BIN file ( USER-ROM ) there is a **HEADER** with information about the Userware Application:<br>
 **MAGIC, API-VERSION, .api_ram_code, .data, bss, entry-point**<br>
 The Kernel will [check MAGIC and API-VERSION](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel/OpenAPI-core.c#L121) if the application is valid<br>
-and will initialize the **.api_ram_code**, .data, bss sections<br>
+and will [initialize](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel/OpenAPI-core.c#L153) the **.api_ram_code**, .data, bss sections<br>
 
 so<br>
 
-We scan **.api_ram_code**, in this example:
+[We scan **.api_ram_code**](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel/OpenAPI-core.c#L175), in this example:
 ```c
 **0xFEEDC0DE, 0xAAC4FB6A**, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF<br>
 ```
