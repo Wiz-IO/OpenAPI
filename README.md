@@ -14,7 +14,7 @@ In order for applications to work regardless of their absolute address relative 
 When you compile your application, the compiler does not know where the shared kernel functions that the application will use are located<br>
 for example: the kernel functions **pinMode()**, **digitalRead()**, **digitalWrite()** are in the Kernel and are shared for use<br>
 The compiler creates a PLT table, more precisely veneer functions by renaming their names to:<br>
-pinMode@plt, digitalRead@plt, digitalWrite@plt and their code looks like:<br>
+**pinMode@plt**, **digitalRead@plt**, **digitalWrite@plt** and their code looks like:<br>
 
 PLT or RAM functions
 ```
@@ -30,13 +30,13 @@ got[2] = 0 ?
 got[3] = 0 ?
 ...
 ```
-and so your app compiles without errors, and the code looks like:<br>
-pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=0
+and so your application compiles without errors, and the code looks like:<br>
+pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=0 <-- no address
 
 **How to launch the app**<br>
 The kernel loads the application somewhere in RAM and<br>
 the Dynamic Linker overwrites the GOT table with the absolute addresses of the shared functions<br>
-pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=0x82001342 <-- real address
+pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=**0x82001342** <-- real address
 
 Unfortunately, all this uses a lot of resources, and more detailed information can be found on the web
 
