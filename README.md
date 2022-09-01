@@ -134,3 +134,29 @@ or binary RAM ARRAY looks like:<br>
 ```
 This RAM section is described in the linker script and has parameters API-BEGIN, API-END, API-SIZE, like a normal .DATA section<br>
 Why EOF - the compiler will remove the unused functions and we need it for the end of the array<br>
+
+##Nothing complicated, right ?
+
+What the above ASM functions actually are?<br>
+**user millis: ldr.w ps, =(kernel millis address)**<br>
+or a 4-byte Thumb32 (or Arm) instruction ( for Thumb16 it's 16 bytes - we won't go into this )<br>
+binary for Cortex M4 it seems<br>
+0xF000F85F = ldr.w ps, =(label)<br>
+0x12345678 = label address<br>
+**But we don't know the address !!!**<br>
+0xF000F85F we will hide it with 0xFEEDC0DE, and instead of the address we will write HASH32( "function_name" )<br>
+
+Compile --> ELF --> BIN --> UPLOAD ... for the above LED BLINK is about 400 bytes
+
+**We're rebooting**<br>
+Kernel initializes the system and will attempt to start Userware located at USER-ROM and use USER-RAM allocated<br>
+at the beginning of the BIN file ( USER-ROM ) there is a HEADER with information about the Userware APP:<br>
+MAGIC, API-VERSION, .api_ram_code, .data, bss, entry-point<br>
+It will check MAGIC and API-VERSION if the application is valid<br>
+and will initialize the .api_ram_code, .data, bss sections<br>
+so<br>
+we scan .api_ram_code, in this case 0xFEEDC0DE, 0xAAC4FB6A, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF<br>
+if API_TABLE[i].hash == hash we overwrite 0xFEEDC0DE with 0xF000F85F and replace HASH with the real function code<br>
+Now Userware is ready to start --> call entry-point --> Arduino blink or ... driveRoverAtMars()<br>
+
+Compile --> ELF --> BIN --> UPLOAD ... for the above LED BLINK is about 400 bytes
