@@ -161,20 +161,20 @@ We scan **.api_ram_code**, in this example:
 ```c
 **0xFEEDC0DE, 0xAAC4FB6A**, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF<br>
 ```
-if API_TABLE[i].hash == hash we overwrite **0xFEEDC0DE** with **0xF000F85F**(instruction) and replace **HASH** with the **real function address**<br>
-Now Userware is ready to start --> call entry-point --> Arduino blink or ... driveRoverAtMars()<br>
+IF **API_TABLE[i].hash == hash** THEN we overwrite **0xFEEDC0DE** with **0xF000F85F**(instruction code) and replace **HASH** with the **real function address**<br>
+Now Userware is ready to Start --> call entry-point --> Arduino blink or ... driveRoverAtMars()<br>
 
-**Basic and simple !!!**
+**Basic and simple !**
 
 Resources:
-* RAM & ROM 8 bytes for shared functions ( Arm or Thumb32 )
+* RAM & ROM 8 bytes for shared functions ( for Arm or Thumb32 )
 * Kernel control
 * Hidden information
 * Option for signed applications
 * etc
 
 The examples in the folders have been tested with
-* Mediatek MT2625 - GSM LPWA NB-IoT SoC ( ARMv7 Cortex M4 )
+* Mediatek **MT2625** - GSM LPWA NB-IoT SoC ( ARMv7 Cortex M4 )
 * Mediatek MT2503 - GSM GPRS SoC ( ARMv6 )
 
 Similarly OpenAPI is OpenCPU:<br>
