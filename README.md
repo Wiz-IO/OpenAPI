@@ -51,7 +51,7 @@ For example: ARM Cortex M4 with several megabytes of ROM & RAM<br>
 Another example: a GSM LPWA NB-IoT module that integrates an Arduino Core,<br>
 which is shared for use by Userware Arduino applications
 
-In Kernel we create a simple table (array) with records:
+In Kernel we create a simple [table](https://github.com/Wiz-IO/OpenAPI/blob/main/example-script/OPEN-API-C.h#L9) (array) with records:
 ```c
 API_TABLE = {
     { 0x10A9DD60, analogRead        }, // mean: HASH32( "function_name" ), adddress of function_name()
@@ -163,7 +163,7 @@ so<br>
 ```c
 **0xFEEDC0DE, 0xAAC4FB6A**, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF<br>
 ```
-IF **API_TABLE[i].hash == hash** THEN we overwrite **0xFEEDC0DE** with **0xF000F85F**(instruction code) and replace **HASH** with the **real function address**<br>
+IF **API_TABLE[i].hash == hash** THEN we [overwrite](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel/OpenAPI-core.c#L190) **0xFEEDC0DE** with **0xF000F85F**(instruction code) and replace **HASH** with the **real function address**<br>
 Now Userware is ready to Start --> call entry-point --> Arduino blink or ... driveRoverAtMars()<br>
 
 **Basic and simple !** ( watch in Youtube )
