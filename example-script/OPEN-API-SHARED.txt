@@ -1,0 +1,465 @@
+api_print
+
+doReset
+getBattery
+getIMEI
+
+millis
+micros
+delay
+delayMicroseconds
+
+pinMode
+digitalWrite
+digitalRead
+analogRead
+analogWrite
+
+uart_open
+uart_close
+uart_write
+uart_read
+uart_peek
+uart_available
+
+API-LIST-END
+
+//// FREE RTOS ////
+
+////systick_backup_callback	00000004	
+////os_gpt_interrupt_handle	00000014	
+////os_gpt0_get_count	00000044	
+////os_gpt0_pause	00000050	
+////os_gpt0_clear_count	00000064	
+////os_gpt0_resume	00000078	
+/tryDeepSleep	00000098	
+////doSystickCalibration	00000188	
+/tryLightSleep	00000218	
+////tickless_log_timestamp	00000294	
+////tickless_system_status	000002B8	
+////AST_vPortSuppressTicksAndSleep	00000420	
+////tickless_handler	00000618	
+////os_gpt_init	000006D0	
+////vPortSetupTimerInterrupt	000007A0	
+////RTC_Freq	00000AB8	
+////wakeup_history	00000A8C	
+////wakeup_eint	00000A88	
+////timestamp_timer	00000A80	
+////reset_gpt_to_systick	00000A5C	
+////systick_backup	00000AC0	
+////os_gpt0	00000ABC
+
+pvPortMalloc	00000050	
+vPortFree	00000184	
+////xPortGetFreeHeapSize	00000204	
+////xPortGetMinimumEverFreeHeapSize	00000210	
+////vPortInitialiseBlocks	0000021C	
+pvPortCalloc	0000021E	
+pvPortRealloc	0000023C	
+//pvPortMallocNC	000002B0	
+//vPortFreeNC	00000348	
+////__wrap_malloc	0000037C	
+////__wrap_calloc	00000380	
+////__wrap_realloc	00000384	
+////__wrap_free	00000388	
+
+////pxPortInitialiseStack	00000038	
+////vPortCurrentTaskStackOverflowCheck	0000005C	
+////SVC_Handler	00000074	
+////vPortEndScheduler	0000009C	
+vPortExitCritical	000000C0	
+////PendSV_Handler	000000F0	
+////vPortSetupTimerInterrupt	00000154	
+////vPortValidateInterruptPriority	00000178	
+vPortRaiseBASEPRI	000001D8	
+////xPortStartScheduler	00000214	
+vPortEnterCritical	0000031C	
+ulPortRaiseBASEPRI	00000364	
+////SysTick_Handler	0000037C	
+////vPortSetBASEPRI	0000039C	
+
+xTaskGenericCreate	00000174	
+vTaskDelete	00000350	
+////eTaskGetState	000003F4	
+uxTaskPriorityGet	0000046C	
+uxTaskPriorityGetFromISR	00000488	
+vTaskPrioritySet	000004A8	
+vTaskResume	0000056C	
+xTaskResumeFromISR	000005F8	
+////vTaskStartScheduler	0000068C	
+////vTaskEndScheduler	00000700	
+//vTaskSuspendAll	00000718	
+xTaskGetTickCount	00000728	
+xTaskGetTickCountFromISR	00000734	
+////uxTaskGetNumberOfTasks	00000744	
+//pcTaskGetTaskName	00000750	
+////vTaskStepTick	0000077C	
+////xTaskIncrementTick	000007B4	
+//xTaskResumeAll	000008D8	
+vTaskDelayUntil	000009C0	
+vTaskDelay	00000A60	
+////uxTaskGetSystemState	00000B84	
+////vTaskSwitchContext	00000C20	
+vTaskSuspend	00000D04	
+////vTaskPlaceOnEventList	00000DB0	
+////vTaskPlaceOnUnorderedEventList	00000E0C	
+////vTaskPlaceOnEventListRestricted	00000E8C	
+////xTaskRemoveFromEventList	00000ED4	
+////xTaskRemoveFromUnorderedEventList	00000F5C	
+////vTaskSetTimeOutState	00000FE8	
+////xTaskCheckForTimeOut	00001018	
+//vTaskMissedYield	0000108C	
+////uxTaskGetTaskNumber	00001098	
+////vTaskSetTaskNumber	0000109E	
+////eTaskConfirmSleepModeStatus	000010A4	
+////uxTaskGetStackHighWaterMark	000010C4	
+xTaskGetCurrentTaskHandle	000010E4	
+////xTaskGetSchedulerState	000010F0	
+////vTaskPriorityInherit	00001110	
+////xTaskPriorityDisinherit	00001180	
+////vTaskList	000011EC	
+////uxTaskResetEventItemValue	000012BC	
+////pvTaskIncrementMutexHeldCount	000012D4	
+ulTaskNotifyTake	000012EC	
+xTaskNotifyWait	0000137C	
+xTaskNotify	0000142C	
+xTaskNotifyFromISR	000014F0	
+vTaskNotifyGiveFromISR	000015D4	
+////uxTaskGetBottomOfStack	00001684	
+////uxTaskGetEventListItemContainer	00001694	
+////pxCurrentTCB	000016A4	
+
+////xTimerCreateTimerTask	000000B0	
+xTimerCreate	00000104	
+xTimerGenericCommand	00000154	
+////pcTimerGetTimerName	000003D0	
+xTimerIsTimerActive	000003D4	
+pvTimerGetTimerID	000003EC	
+////xTimerPendFunctionCallFromISR	000003F0	
+////xTimerPendFunctionCall	00000418	
+
+xEventGroupCreate	00000004	
+xEventGroupWaitBits	00000020	
+xEventGroupClearBits	0000012C	
+////vEventGroupClearBitsCallback	00000174	
+xEventGroupClearBitsFromISR	00000178	
+xEventGroupGetBitsFromISR	00000188	
+xEventGroupSetBits	0000019C	
+xEventGroupSync	00000224	
+////vEventGroupSetBitsCallback	000002EC	
+vEventGroupDelete	000002F0	
+xEventGroupSetBitsFromISR	00000338	
+////uxEventGroupGetNumber	00000348	
+
+xQueueGenericReset	00000184	
+xQueueGenericCreate	00000204	
+xQueueCreateCountingSemaphore	00000270	
+xQueueGenericSend	000002C8	
+xQueueCreateMutex	00000438	
+xQueueGiveMutexRecursive	0000049C	
+xQueueGenericSendFromISR	000004DC	
+xQueueGiveFromISR	000005A0	
+xQueueGenericReceive	00000634	
+xQueueTakeMutexRecursive	000007A0	
+xQueueReceiveFromISR	000007E8	
+xQueuePeekFromISR	00000870	
+uxQueueMessagesWaiting	000008E0	
+uxQueueSpacesAvailable	00000908	
+uxQueueMessagesWaitingFromISR	00000934	
+////uxQueueGetQueueNumber	00000954	
+////vQueueSetQueueNumber	00000958	
+ucQueueGetQueueType	0000095C	
+xQueueIsQueueEmptyFromISR	00000964	
+xQueueIsQueueFullFromISR	00000988	
+////vQueueAddToRegistry	000009B0	
+vQueueUnregisterQueue	000009D4	
+vQueueDelete	000009F8	
+vQueueWaitForMessageRestricted	00000A20	
+xQueueCreateSet	00000A5A	
+xQueueAddToSet	00000A62	
+xQueueRemoveFromSet	00000A84	
+xQueueSelectFromSet	00000AA4	
+xQueueSelectFromSetFromISR	00000ABC	
+////uxQueueGetTasksWaitingToReceive	00000AD2	
+////xQueueRegistry	00000AD8	
+
+
+//// HAL ////
+
+//// WDT
+hal_wdt_init	00000074	
+hal_wdt_deinit	000000C8	
+hal_wdt_register_callback	000000DC	
+hal_wdt_feed	000000EC	
+hal_wdt_software_reset	00000160	
+hal_wdt_enable	00000170	
+hal_wdt_disable	00000190	
+hal_wdt_get_reset_status	000001AC	
+hal_wdt_get_enable_status	000001B6	
+hal_wdt_get_mode	000001C0	
+
+//// ISR
+////hal_nvic_init	00000004	
+hal_nvic_enable_irq	00000038	
+hal_nvic_disable_irq	00000060	
+////hal_nvic_get_pending_irq	00000088	
+////hal_nvic_set_pending_irq	000000B4	
+////hal_nvic_clear_pending_irq	000000DC	
+hal_nvic_set_priority	00000104	
+hal_nvic_get_priority	00000124	
+////get_current_irq	00000140	
+////isrC_main	00000150	
+hal_nvic_register_isr_handler	000001A8	
+hal_nvic_save_and_set_interrupt_mask	00000190	
+hal_nvic_restore_interrupt_mask	0000019E	
+////nvic_function_table	000001EC
+
+//// GPIO
+////is_pin_with_pullsel	00000004	
+////is_pin_in_cfg0	0000001C	
+////is_pin_in_cfg1	00000026	
+hal_gpio_init	00000030	
+hal_gpio_deinit	00000034	
+hal_gpio_set_direction	00000038	
+hal_gpio_get_direction	00000074	
+hal_pinmux_set_function	000000B8	
+hal_gpio_get_input	00000124	
+hal_gpio_set_output	0000016C	
+hal_gpio_get_output	000001A8	
+hal_gpio_toggle_pin	000001F0	
+hal_gpio_set_clockout	0000022C	
+hal_gpio_set_pupd_register	00000270	
+hal_gpio_pull_up	0000030C	
+hal_gpio_pull_down	00000398	
+hal_gpio_disable_pull	00000424	
+hal_gpio_set_high_impedance	000004B0	
+hal_gpio_clear_high_impedance	0000050C	
+hal_gpio_set_driving_current	00000580	
+hal_gpio_get_driving_current	00000600	
+////clk_out_contorl	00000658	
+////gpio_cfg1	00000664	
+////gpio_cfg0	00000660	
+////gpio_base	0000065C
+
+
+//// EINT
+hal_eint_register_callback	00000004	
+hal_eint_set_trigger_mode	00000034	
+hal_eint_set_debounce_count	000000B8	
+hal_eint_set_debounce_time	00000120	
+hal_eint_init	00000184	
+hal_eint_set_software_trigger	00000208	
+hal_eint_clear_software_trigger	00000234	
+////eint_mask_wakeup_source	00000260	
+////eint_unmask_wakeup_source	00000280	
+hal_eint_mask	000002A0	
+hal_eint_deinit	00000340	
+hal_eint_unmask	000002E4	
+
+//// UART
+////uart_receive_handler	00000004	
+////uart_send_handler	000000B8	
+////uart_error_handler	000001D0	
+hal_uart_set_baudrate	00000230	
+hal_uart_set_format	0000028C	
+hal_uart_init	0000030C	
+hal_uart_deinit	00000444	
+////uart_backup_all_registers	00000538	
+hal_uart_put_char	000005BC	
+hal_uart_send_polling	000005DC	
+hal_uart_send_dma	00000610	
+hal_uart_get_char	00000758	
+hal_uart_get_char_unblocking	0000077C	
+hal_uart_receive_polling	000007A0	
+hal_uart_receive_dma	000007D4	
+hal_uart_register_callback	00000860	
+hal_uart_get_available_send_space	00000A0C	
+hal_uart_get_available_receive_bytes	00000A54	
+hal_uart_set_hardware_flowcontrol	00000A9C	
+hal_uart_set_software_flowcontrol	00000AD8	
+hal_uart_disable_flowcontrol	00000B2C	
+hal_uart_set_dma	00000B64	
+////uart_restore_all_registers	00000CC8	
+hal_uart_set_dma_timeout	00000DD8	
+hal_uart_set_auto_baudrate	00000E00	
+
+//// SPI
+////spi_master_isr	00000004	
+hal_spi_master_init	00000030	
+hal_spi_master_set_advanced_config	00000128	
+hal_spi_master_deinit	0000017C	
+hal_spi_master_send_polling	000001D4	
+hal_spi_master_send_and_receive_polling	00000254	
+hal_spi_master_register_callback	00000304	
+hal_spi_master_send_dma	00000390	
+hal_spi_master_send_dma_blocking	00000434	
+hal_spi_master_send_and_receive_dma	000004C8	
+hal_spi_master_send_and_receive_dma_blocking	000005A0	
+hal_spi_master_get_running_status	00000664	
+hal_spi_master_set_chip_select_timing	000006A8	
+hal_spi_master_set_deassert	0000070C	
+hal_spi_master_set_mode	00000754	
+hal_spi_master_set_dummy_bits	000007A4	
+hal_spi_master_set_command_bytes	000007EC	
+////g_spi_master_direction	0000084C	
+
+//// I2C
+hal_i2c_master_init	000000FC	
+hal_i2c_master_deinit	0000016C	
+hal_i2c_master_set_frequency	000001CC	
+hal_i2c_master_register_callback	00000218	
+hal_i2c_master_send_polling	00000260	
+hal_i2c_master_send_dma	00000330	
+hal_i2c_master_receive_polling	00000410	
+hal_i2c_master_receive_dma	000004E4	
+hal_i2c_master_send_to_receive_polling	000005CC	
+hal_i2c_master_send_to_receive_dma	000006B8	
+hal_i2c_master_send_dma_ex	00000814	
+hal_i2c_master_receive_dma_ex	00000900	
+hal_i2c_master_send_to_receive_dma_ex	000009F0	
+hal_i2c_master_get_running_status	00000B54	
+/hal_i2c_isr_handler	00000B74	
+////hal_i2c_backup_all_register	00000CA0	
+////hal_i2c_restore_all_register	00000CDC	
+
+//// ADC
+/////adc_backup_all_register	00000004	
+/////adc_restore_all_register	00000020	
+hal_adc_init	0000003C	
+hal_adc_deinit	000000CC	
+////adc_get_gain_offset_error	00000104	
+////adc_data_calibrate	00000144	
+hal_adc_get_data_polling	000001D4	
+////g_adc_status	000002B8	
+
+//// PWM
+hal_pwm_init	00000004	
+hal_pwm_deinit	00000070	
+hal_pwm_set_frequency	00000088	
+hal_pwm_set_duty_cycle	00000128	
+hal_pwm_start	00000164	
+hal_pwm_stop	000001AC	
+hal_pwm_get_frequency	000001F8	
+hal_pwm_get_duty_cycle	0000028C	
+hal_pwm_get_running_status	000002BC	
+hal_pwm_set_advanced_config	000002DC	
+////pwm_pdn	00000318	
+////pwm	00000308	
+
+//// RTC - ATTENTION !!! USED, TODO
+////f32k_measure_clock	000003D8	
+////f32k_measure_count	0000043C	
+////hal_rtc_deinit	00000494	
+hal_rtc_get_time	00000498	
+////hal_rtc_set_time_notification_period	000004E8	
+////hal_rtc_set_alarm	00000550	
+////hal_rtc_get_alarm	000005CC	
+////hal_rtc_enable_alarm	00000614	
+////hal_rtc_disable_alarm	00000694	
+////hal_rtc_set_alarm_callback	00000798
+////hal_rtc_set_md_alarm	000006B0	
+////hal_rtc_get_md_alarm	000006FC	
+////hal_rtc_enable_md_alarm	0000074C	
+////hal_rtc_disable_md_alarm	0000076C	
+////hal_rtc_set_time_callback	00000788	
+////hal_rtc_set_md_alarm_callback	000007AC	
+////hal_rtc_set_eint_callback	000007C0	
+////hal_rtc_get_f32k_frequency	000007D0	
+////rtc_set_data	000007E4	
+////hal_rtc_set_data	00000838	
+////rtc_set_time_zone	00000850	
+////rtc_get_data	00000874	
+////hal_rtc_get_data	000008B8	
+////rtc_get_time_zone	000008D0	
+////rtc_clear_data	000008E0	
+////hal_rtc_clear_data	00000904	
+////rtc_set_register	00000934	
+////rtc_get_register	00000940	
+////rtc_alarm_power_on_test	0000094C	
+////rtc_enter_test	00000994	
+////rtc_get_banks_in_active	000009BC	
+////hal_rtc_retention_sram_config	000009D8	
+////hal_rtc_enter_retention_mode	00000BE4	
+////hal_rtc_enter_rtc_mode	00000D24	
+////rtc_power_on_result	00000D3C	
+////hal_rtc_exit_retention_mode	00000D54	
+////rtc_set_gpio_output	00000F50	
+////hal_rtc_configure_gpio	00000F94	
+////hal_rtc_eint_init	00001020	
+////rtc_init_phase_2	00001064	
+////rtc_power_on_result_external	000011D0	
+////rtc_get_second_diff_from_two_time	000011DA	
+////hal_rtc_init	00001248	
+////hal_rtc_get_elapsed_tick	0000157C	
+////rtc_get_elapsed_tick_sram	0000162C	
+////rtc_sw_timer_find_next_valid_timer	00001688	
+////rtc_sw_timer_forward_time	00001758	
+////rtc_sw_timer_isr	00001774	
+////hal_rtc_set_time	00001978	
+rtc_sw_timer_create	00001B7C	
+rtc_sw_timer_start	00001C1C	
+rtc_sw_timer_stop	00001D78	
+////rtc_sw_timer_get_remaining_time_ms	00001E58	
+////rtc_sw_timer_is_timer_active	00001F40	
+rtc_sw_timer_delete	00001F78	
+////rtc_time_sram	000020A4	
+////abist_fqmtr_register	00002068	
+////rtc_register	00002070	
+////rtc_sw_timer_context	000020B0	
+////rtc_time_modem	00002084	
+////system_boot_log	00002029	
+////rtc_mode_flag	00002024	
+////retention_flag	0000200A	
+
+//// TRNG
+hal_trng_init	00000004	
+hal_trng_deinit	0000000E	
+hal_trng_get_generated_random_number	00000018	
+
+//// CRYPTO OPTIONAL ////
+
+/hal_crypt_lock_take	00000090	
+/hal_crypt_lock_give	000000BC	
+////dump_crypto_register	000000C8	
+/hal_aes_encrypt_with_padding	00000118	
+/hal_aes_decrypt	000002A4	
+/hal_aes_cbc_encrypt	000003EC	
+/hal_aes_cbc_decrypt	00000424	
+/hal_aes_ecb_encrypt	0000045C	
+/hal_aes_ecb_decrypt	0000049C	
+/hal_aes_cbc_encrypt_ex	000004DC	
+/hal_aes_cbc_decrypt_ex	0000052E	
+/hal_aes_ecb_encrypt_ex	00000580	
+/hal_aes_ecb_decrypt_ex	000005D6	
+////data_block	00000630	
+////init_vector2	00000640	
+////g_crypt_lock	0000062D
+
+/hal_des_encrypt_with_padding	0000005C	
+/hal_des_decrypt	000001A0	
+/hal_des_cbc_encrypt	000002B8	
+/hal_des_cbc_decrypt	000002E6	
+/hal_des_ecb_encrypt	00000314	
+/hal_des_ecb_decrypt	00000346	
+
+/hal_sha1_init	00000004	
+/hal_sha1_append	00000024	
+/hal_sha1_end	00000098	
+/hal_sha224_init	000000BC	
+/hal_sha224_append	000000DC	
+/hal_sha224_end	00000150	
+/hal_sha256_init	00000174	
+/hal_sha256_append	00000194	
+/hal_sha256_end	00000208	
+/hal_sha384_init	0000022C	
+/hal_sha384_append	0000024C	
+/hal_sha384_end	000002C0	
+/hal_sha512_init	000002E4	
+/hal_sha512_append	00000304	
+/hal_sha512_end	0000037C
+
+/hal_md5_init	00000004	
+/hal_md5_append	00000034	
+/hal_md5_end	00000098	
+
+
