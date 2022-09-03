@@ -43,3 +43,4 @@ void loop(void)
 [ARDUINO] millis = 10420
  ...etc
 ```
+![ScreenShot](https://raw.githubusercontent.com/Wiz-IO/Arduino_MT2625_BC66/master/board.jpg)
