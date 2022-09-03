@@ -47,12 +47,12 @@ got[3] = 0 ?
 ![plt got before](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/plt_got-1.png)
 
 and so your application compiles without errors, and the code looks like:<br>
-pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=0 <-- no address
+pinMode() --> pinMode@plt: jump got[1]=0 <-- no address
 
 **How to launch the app**<br>
 The kernel loads the application somewhere in RAM and<br>
 the Dynamic Linker overwrites the GOT table with the absolute addresses of the shared functions<br>
-pinMode() --> pinMode_veneer() --> pinMode@plt: jump got[1]=**0x82001342** <-- real address
+pinMode() --> pinMode@plt: jump got[1]=**0x82001342** <-- real address
 
 ![plt got after](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/plt_got-2.png)
 
