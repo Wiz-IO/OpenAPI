@@ -1,4 +1,4 @@
-# as example for LPWA Quectel BC66NB module
+## as example for LPWA Quectel BC66NB module
 
 **The FIRMWARE**
 * NB modem is disabled - just for periphery test
