@@ -55,7 +55,7 @@ which is shared for use by Userware Arduino applications
 
 In Kernel we create a simple [table](https://github.com/Wiz-IO/OpenAPI/blob/main/example-script/OPEN-API-C.h#L9-L27) (array) with records:
 ```c
-API_TABLE = {
+API_TABLE = { // sorted by hash for fast binary-search
     { 0x10A9DD60, analogRead        }, // mean: HASH32( "function_name" ), adddress of function_name()
     { 0x1C76F7B6, micros            },
     { 0x1F55D5A2, delay             },
