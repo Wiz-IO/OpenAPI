@@ -1,6 +1,6 @@
 ## as example for LPWA Quectel BC66NB module
 
-It will probably work with SIMcom, Fibocom ... etc. modules with MT2625 SoC - I don't have modules for testing
+It will probably work with SIMcom, Fibocom ... etc. modules with **MT2625 SoC** - I don't have modules for testing
 
 The **FIRMWARE**
 * NB modem is disabled - just for periphery test
