@@ -74,12 +74,20 @@ We will use HASH with which we will search the addresses,<br>
 and the trick with HASH is that we don't care about the string name of the functions<br>
 We also have a function:<br>
 ```c
-uint32_t getFunctionAddressByHash( uint32_t hash ) // note: I will write interactively to make it understandable
-{ 
-    for everything from от API_TABLE[]: 
-        if API_TABLE[i].hash == hash 
-            return API_TABLE[i].function 
-    or return error
+static uint32_t getFunctionByHash(uint32_t hash) // binary-search
+{
+    int mid, low = 0, high = API_COUNT - 1;
+    while (low <= high)
+    {
+        mid = low + (high - low) / 2;
+        if (API_TABLE[mid].hash == hash)
+            return API_TABLE[mid].func;
+        if (API_TABLE[mid].hash < hash)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    return 0;
 }
 ```
 The Kernel only needs a procedure to start the Userware application - we'll come back to that later
