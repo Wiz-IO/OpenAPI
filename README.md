@@ -13,7 +13,8 @@ They are probably controlled with an external MCU and AT commands - technology f
 There is probably free, unusable space in their memory<br>
 Integrate OpenAPI and your customers will be able to write their own applications ( without external management )<br>
 
-<hr>
+<hr><br>
+
 ## Where does the idea come from?
 
 Traditionally called: **Position Independent Code** ( PIC )<br>
