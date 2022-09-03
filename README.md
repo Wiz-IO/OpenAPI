@@ -106,13 +106,13 @@ void setup(void)
 void loop(void)
 {
     static int T = 0;
-    digitalWrite(LED, T & 1);
+    digitalWrite(LED, T & 1); // blink
     delay(250);
     if (++T % 20 == 0)
     {
         Serial.printf("[ARDUINO] millis = %u\n", millis());
     }
-    if (Serial.available())
+    if (Serial.available()) // echo for test
     {
         Serial.print("[ARDUINO] Serial echo: ");
         while (Serial.available())
