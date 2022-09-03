@@ -81,7 +81,7 @@ API_TABLE = { // sorted by hash for fast binary-search
     ...
 }
 ```
-looks like **GOT table**
+Looks like **PIC GOT table**
 
 We will use HASH with which we will search the addresses,<br>
 and the trick with HASH is that we don't care about the string name of the functions<br>
@@ -165,7 +165,7 @@ micros:
 
 // etc all other shared functions
 ```
-looks like **PLT table**
+Looks like **PIC PLT table**
 
 or binary RAM ARRAY looks like:<br>
 ```c
@@ -198,8 +198,10 @@ and will [initialize](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel
 
 and will patch veneers<br>
 
-IF **API_TABLE[i].hash == hash** THEN we overwrite **0xFEEDC0DE** with **0xF000F85F**(instruction code) and replace **HASH** with the **real function address**<br>
+IF **API_TABLE[i].hash == hash** THEN we overwrite **0xFEEDC0DE** with **0xF000F85F**( RAMinstruction code ) <br>
+and replace **HASH** with the **real function address**<br>
 Now Userware is ready to Start --> call entry-point --> Arduino blink or ... driveRoverAtMars()<br>
+Looks like **Dynamic Linker**
 
 **Basic and simple !** ( watch in Youtube )
 
