@@ -1,3 +1,5 @@
+NOTE: libopenapi.a is pre-compiled OPEN-API-S.S 
+
 ```c
 int main(void)
 {
