@@ -54,7 +54,7 @@ For example: ARM Cortex M4 with several megabytes of ROM & RAM<br>
 Another example: a GSM LPWA NB-IoT module that integrates an Arduino Core,<br>
 which is shared for use by Userware Arduino applications
 
-In Kernel we create a simple [table](https://github.com/Wiz-IO/OpenAPI/blob/main/example-script/OPEN-API-C.h#L9-L27) (array) with records:
+In Kernel we create a simple [table](https://github.com/Wiz-IO/OpenAPI/blob/main/example-script/OPEN-API-C.h) (array) with records:
 ```c
 API_TABLE = { // sorted by hash for fast binary-search
     { 0x10A9DD60, analogRead        }, // mean: HASH32( "function_name" ), adddress of function_name()
