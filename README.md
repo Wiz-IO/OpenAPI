@@ -24,7 +24,7 @@ In order for applications to work regardless of their absolute address relative 
 * **Global Offset Table** ( GOT ) 
 * **Dynamic Linker** ( Kernel Procedure )
 
-## Very briefly<br>
+### Very briefly<br>
 When you compile your application, the compiler does not know where the shared kernel functions that the application will use are located<br>
 for example: the kernel functions **pinMode()**, **digitalRead()**, **digitalWrite()** are in the Kernel and are shared for use<br>
 The compiler creates a PLT table, more precisely veneer functions by renaming their names to:<br>
