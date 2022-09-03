@@ -1,11 +1,11 @@
 # as example for LPWA Quectel BC66NB module
 
-The FIRMWARE
+**The FIRMWARE**
 * NB modem is disabled - just for periphery test
 * The firmware use default boot loader
-* Make NVDM backup and upload firmware
+* Make NVDM backup and upload firmware ( just in case )
 
-The Userware is simple ARDUINO program
+**The Userware** is simple ARDUINO program
 ```
 #include "Arduino.h"
 
