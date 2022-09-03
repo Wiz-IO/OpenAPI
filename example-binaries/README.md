@@ -3,9 +3,10 @@
 **The FIRMWARE**
 * NB modem is disabled - just for periphery test
 * The firmware use default boot loader
-* Make NVDM backup and upload firmware ( just in case )
+* Make NVDM backup and upload FIRMWARE ( just in case )
 
 **The Userware** is simple ARDUINO program
+* upload ARDUINO and watch uarts
 ```
 #include "Arduino.h"
 
