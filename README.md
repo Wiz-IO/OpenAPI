@@ -5,6 +5,7 @@ _( will be more of an explanation than copy / paste code and the association wit
 
 OpenAPI is the sharing of Kernel ( Firmware ) functions to Userware applications<br>
 or dynamically linking statically compiled applications<br>
+_Note: no Memory Management Unit ( MMU )_
 
 Traditionally called: **Position Independent Code** ( PIC )<br>
 https://en.wikipedia.org/wiki/Position-independent_code <br>
