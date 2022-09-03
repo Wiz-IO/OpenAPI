@@ -183,13 +183,9 @@ At the beginning of the BIN file ( USER-ROM ) there is a **HEADER** with informa
 The Kernel will [check MAGIC and API-VERSION](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel/OpenAPI-core.c#L121) if the application is valid<br>
 and will [initialize](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel/OpenAPI-core.c#L137) the **.api_ram_code**, .data, bss sections<br>
 
-so<br>
+and will patch veneers<br>
 
-[We scan **.api_ram_code**](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel/OpenAPI-core.c#L175), in this example:
-```c
-**0xFEEDC0DE, 0xAAC4FB6A**, 0xFEEDC0DE, 0x1C76F7B6<br>
-```
-IF **API_TABLE[i].hash == hash** THEN we [overwrite](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel/OpenAPI-core.c#L190) **0xFEEDC0DE** with **0xF000F85F**(instruction code) and replace **HASH** with the **real function address**<br>
+IF **API_TABLE[i].hash == hash** THEN we overwrite **0xFEEDC0DE** with **0xF000F85F**(instruction code) and replace **HASH** with the **real function address**<br>
 Now Userware is ready to Start --> call entry-point --> Arduino blink or ... driveRoverAtMars()<br>
 
 **Basic and simple !** ( watch in Youtube )
