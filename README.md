@@ -14,7 +14,7 @@ There is probably free, unusable space in their memory<br>
 Integrate OpenAPI and your customers will be able to write their own applications ( without external management )<br>
 
 <hr>
-
+## Where does the idea come from?
 
 Traditionally called: **Position Independent Code** ( PIC )<br>
 https://en.wikipedia.org/wiki/Position-independent_code <br>
