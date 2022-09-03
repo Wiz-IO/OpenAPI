@@ -7,7 +7,7 @@ OpenAPI is the sharing of Kernel ( Firmware ) functions to Userware applications
 or dynamically linking statically compiled applications<br>
 _Note: no Memory Management Unit ( MMU )_
 
-Suitable for IoT ( WiFi, GSM, LoRa ) modules<br>
+**Suitable for IoT ( WiFi, GSM, LoRa ... etc ) modules**<br>
 You manufacture IoT modules<br>
 They are probably controlled with an external MCU and AT commands - technology from the last century<br>
 There is probably free, unusable space in their memory<br>
