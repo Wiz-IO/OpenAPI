@@ -30,14 +30,14 @@ for example: the kernel functions **pinMode()**, **digitalRead()**, **digitalWri
 The compiler creates a PLT table, more precisely veneer functions by renaming their names to:<br>
 **pinMode@plt**, **digitalRead@plt**, **digitalWrite@plt** and their code looks like:<br>
 
-PLT or RAM functions
+PLT or RAM veneers
 ```
 pinMode@plt:        jump got[1]
 digitalRead@plt:    jump got[2]
 digitalWrite@plt:   jump got[3]
 ...
 ```
-GOT[] or array
+GOT[] or indexed array
 ```
 got[1] = 0 ? ZERO does not know the address of the function
 got[2] = 0 ?
