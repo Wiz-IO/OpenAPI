@@ -30,7 +30,7 @@ for example: the kernel functions **pinMode()**, **digitalRead()**, **digitalWri
 The compiler creates a PLT table, more precisely veneer functions by renaming their names to:<br>
 **pinMode@plt**, **digitalRead@plt**, **digitalWrite@plt** and their code looks like:<br>
 
-PLT or RAM veneers
+PLT or ram veneers
 ```
 pinMode@plt:        jump got[1]
 digitalRead@plt:    jump got[2]
