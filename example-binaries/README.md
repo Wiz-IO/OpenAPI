@@ -12,7 +12,7 @@ The **FIRMWARE**
 The Userware application is simple **ARDUINO** program
 * Upload ARDUINO
 * Watch uarts...
-```
+```c
 #include "Arduino.h"
 
 void setup(void)
