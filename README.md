@@ -132,7 +132,7 @@ looks like **PLT table**
 
 or binary RAM ARRAY looks like:<br>
 ```c
-0xFEEDC0DE, 0xAAC4FB6A, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF // this last means section EOF<br>
+0xFEEDC0DE, 0xAAC4FB6A, 0xFEEDC0DE, 0x1C76F7B6 ... 0 // last zero means section EOF<br>
 ```
 This RAM section is described in the [linker script](https://github.com/Wiz-IO/OpenAPI/blob/main/example-user/lib/cpp.ld#L79) and has parameters API-BEGIN, API-END, API-SIZE, like a normal **.data** section<br>
 Why EOF - the compiler will remove the unused functions and we need it for the end of the array<br>
@@ -163,7 +163,7 @@ so<br>
 
 [We scan **.api_ram_code**](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel/OpenAPI-core.c#L175), in this example:
 ```c
-**0xFEEDC0DE, 0xAAC4FB6A**, 0xFEEDC0DE, 0x1C76F7B6 ... 0xFFFFFFFF, 0xFFFFFFFF<br>
+**0xFEEDC0DE, 0xAAC4FB6A**, 0xFEEDC0DE, 0x1C76F7B6<br>
 ```
 IF **API_TABLE[i].hash == hash** THEN we [overwrite](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel/OpenAPI-core.c#L190) **0xFEEDC0DE** with **0xF000F85F**(instruction code) and replace **HASH** with the **real function address**<br>
 Now Userware is ready to Start --> call entry-point --> Arduino blink or ... driveRoverAtMars()<br>
