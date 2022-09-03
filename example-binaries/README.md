@@ -1,6 +1,6 @@
 ## as example for LPWA Quectel BC66NB module
 
-**The FIRMWARE**
+The **FIRMWARE**
 * NB modem is disabled - just for periphery test
 * The firmware use default boot loader
 * Make NVDM backup and upload FIRMWARE ( just in case )
