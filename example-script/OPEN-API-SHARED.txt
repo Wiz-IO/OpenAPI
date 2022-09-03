@@ -4,16 +4,22 @@ doReset
 getBattery
 getIMEI
 
+yield
 millis
 micros
 delay
 delayMicroseconds
+delay_ms
+delay_us
 
 pinMode
 digitalWrite
 digitalRead
 analogRead
 analogWrite
+attachInterrupt
+detachInterrupt
+
 
 uart_open
 uart_close
@@ -21,8 +27,9 @@ uart_write
 uart_read
 uart_peek
 uart_available
+uart_flush
 
-API-LIST-END
+//API-LIST-END
 
 //// FREE RTOS ////
 
