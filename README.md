@@ -7,6 +7,15 @@ OpenAPI is the sharing of Kernel ( Firmware ) functions to Userware applications
 or dynamically linking statically compiled applications<br>
 _Note: no Memory Management Unit ( MMU )_
 
+Suitable for IoT ( WiFi, GSM, LoRa ) modules<br>
+You manufacture IoT modules<br>
+They are probably controlled with an external MCU and AT commands - technology from the last century<br>
+There is probably free, unusable space in their memory<br>
+Integrate OpenAPI and your customers will be able to write their own applications ( without external management )<br>
+
+<hr>
+
+
 Traditionally called: **Position Independent Code** ( PIC )<br>
 https://en.wikipedia.org/wiki/Position-independent_code <br>
 In order for applications to work regardless of their absolute address relative to the kernel, they use:<br>
