@@ -198,7 +198,7 @@ and will [initialize](https://github.com/Wiz-IO/OpenAPI/blob/main/example-kernel
 
 and will patch veneers<br>
 
-IF **API_TABLE[i].hash == hash** THEN we overwrite **0xFEEDC0DE** with **0xF000F85F**( RAMinstruction code ) <br>
+IF **API_TABLE[i].hash == hash** THEN we overwrite **0xFEEDC0DE** with **0xF000F85F**( instruction code ) <br>
 and replace **HASH** with the **real function address**<br>
 Now Userware is ready to Start --> call entry-point --> Arduino blink or ... driveRoverAtMars()<br>
 Looks like **Dynamic Linker**
