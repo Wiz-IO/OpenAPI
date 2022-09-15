@@ -212,6 +212,7 @@ Resources:
 * Kernel control
 * Hidden information
 * Option for signed applications
+* as example: Arduino peripheral functions: 36 ( GPIO, EINT, ADC, PWM, UART, I2C, SPI )  
 * etc
 
 The examples in the folders have been tested with
