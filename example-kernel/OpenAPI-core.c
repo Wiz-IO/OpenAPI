@@ -4,84 +4,42 @@
     PLT ( Procedure Linkage Table ) & GOT ( Global Offset Table ) imitation
 */
 
-#include <stdint.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdarg.h>
+#include "OpenAPI-core.h"
+#include "arduino-main.h"
+#include "arduino-wiring.h"
+#include "arduino-periphery.h"
 
-#include "hal.h"
-#include "hal_rtc_internal.h"
-
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "semphr.h"
-#include "timers.h"
-#include "event_groups.h"
-
-#include "syslog.h"
-#include "OpenAPI-shared.h"
-
-int Printf(const char *f, ...) // private case
+int Printf(const char *f, ...)
 {
     va_list a;
     va_start(a, f);
     return vprintf(f, a);
 }
-#define PRINT Printf
+
+void Printh(const char *txt, const char *buf, uint8_t size)
+{
+    if (buf && size)
+    {
+        if (txt)
+        {
+            Printf("%s ", txt);
+        }
+        for (int i = 0; i < size; i++)
+        {
+            Printf("%02X ", (int)buf[i] & 0xFF);
+        }
+        Printf("\n");
+    }
+}
 
 static int api_print(const char *f, va_list a) // private debug, shared to app
 {
     return vprintf(f, a);
 }
 
-// Application space: edit
-#define APP_ROM 0x08292000
-#define APP_MAX 0x00032000
-#define APP_RAM 0x001E7000
+#define PRINTF(...) Printf(__VA_ARGS__)
 
-typedef struct // APP_ROM Header
-{
-    uint32_t magic;       // APP_MAG
-    uint32_t api_version; // API_VERSION
-    uint32_t app_entry;   // FreeRTOS app entry
-
-    uint16_t app_stack;    // FreeRTOS app stack - optional
-    uint16_t app_priority; // FreeRTOS app priority - optional
-
-    uint32_t api_load;
-    uint32_t api_start;
-    uint32_t api_end;
-
-    uint32_t data_load;
-    uint32_t data_start;
-    uint32_t data_end;
-
-    uint32_t bss_start;
-    uint32_t bss_end;
-} app_rom_t;
-
-typedef struct /*PLT*/
-{
-    uint32_t veneer; /* LDR.W PC, =(function) */
-    union
-    {
-        uint32_t hash; // table must be sorted by hash & binary-search for fast
-        uint32_t func;
-    };
-} api_veneer_t;
-
-typedef struct /*GOT*/
-{
-    uint32_t hash;
-    uint32_t func;
-} api_table_t;
-
-#define API_VERSION 0x100
-#define APP_MAGIC 0xCAFECAFE /* mean: Application exist ?? */
-
-#define API_CODEER 0xFEEDC0DE /* hide veneer code */
-#define API_VENEER 0xF000F85F /* LDR.W PC, =(function) for thumb func+1 */
+///////////////////////////////////////////////////////////////////////////////
 
 static const api_table_t API_TABLE[] = {
 #include "OPEN-API-C.h"
@@ -110,9 +68,15 @@ static uint32_t getFunctionByHash(uint32_t hash)
 
 TaskHandle_t app_handle = NULL; // optional
 
-int run_application(void)
+bool IS_OPEN_API_ENABLED = true;
+bool IS_OPEN_API_READY = false; // for external test
+
+int api_run_application(void)
 {
-    PRINT("[A] Starting OpenAPI Application ( v1.0.0 )\n");
+    if (false == IS_OPEN_API_ENABLED)
+        return -1;
+
+    PRINTF("[A] Starting OpenAPI Application ( v1.0.0 )\n");
 
     int counter = 0;
     volatile app_rom_t *rom = (app_rom_t *)APP_ROM;
@@ -120,38 +84,48 @@ int run_application(void)
     // check magic, api version, app entry
     if (rom->magic != APP_MAGIC && rom->api_version != API_VERSION)
     {
-        PRINT("[ERROR] Application not exist\n");
+        PRINTF("[ERROR] Application not exist\n");
         return -1;
     }
     if (rom->app_entry < APP_ROM || rom->app_entry > APP_ROM + APP_MAX)
     {
-        PRINT("[ERROR] Application Wrong Entry\n");
+        PRINTF("[ERROR] Application Wrong Entry\n");
         return -2;
     }
-    if (rom->app_stack < 1024 || rom->app_stack > 8096 || rom->app_priority != TASK_PRIORITY_NORMAL) // optional
+
+    uint16_t priority = TASK_PRIORITY_NORMAL; // rom->app_priority;
+    uint16_t stack = rom->app_stack;
+#if 1
+    if (stack < 1024)
+        stack = 1024;
+    if (stack > 8192)
+        stack = 8192;
+#else
+    if (stack < 1024 || stack > 8192 || rom->app_priority != TASK_PRIORITY_NORMAL) // optional
     {
-        PRINT("[ERROR] Application Wrong Params\n");
+        PRINTF("[ERROR] Application Wrong Params\n");
         return -3;
     }
+#endif
 
     /* copy the API segment into ram and pach it - mandatory */
+    uint32_t function;
     uint32_t *src = rom->api_load;  // ROM
     uint32_t *dst = rom->api_start; // RAM
     if (src != dst)
     {
         while ((uint32_t)dst < rom->api_end)
         {
-            if (0 == *src) // zero must exist eof, gcc remove section .api ?!
+            if (0 == *src) // zero must exist - eof, gcc remove section .api ?!
             {
-                PRINT("[A] API EOF: Application use %d functions\n", counter);
+                PRINTF("[A] API EOF: Application use %d functions\n", counter);
                 break;
             }
             if (API_CODEER == *src)
             {
                 *(dst++) = API_VENEER;
                 src++;
-                uint32_t function = getFunctionByHash(*src);
-                if (function)
+                if ((function = getFunctionByHash(*src)))
                 {
                     *(dst++) = function;
                     src++;
@@ -159,13 +133,13 @@ int run_application(void)
                 }
                 else
                 {
-                    PRINT("[ERROR] API FUNCTION NOT EXIST ( HASH: %08X )\n", *src);
+                    PRINTF("[ERROR] API FUNCTION NOT EXIST ( HASH: %08X )\n", *src);
                     return -10;
                 }
             }
             else
             {
-                PRINT("[ERROR] API CODEER\n");
+                PRINTF("[ERROR] API CODEER\n");
                 return -11;
             }
         }
@@ -184,14 +158,15 @@ int run_application(void)
         while ((uint32_t)dst < rom->bss_end)
             *(dst++) = 0;
 
-    PRINT("[A] Creating Application Task and Run\n");
-    if (pdPASS == xTaskCreate((TaskFunction_t)rom->app_entry, "APPLICATION", (uint16_t)rom->app_stack, NULL, rom->app_priority, &app_handle))
+    if (pdPASS == xTaskCreate((TaskFunction_t)rom->app_entry, "APPLICATION", (uint16_t)stack, NULL, priority, &app_handle))
     {
+        IS_OPEN_API_READY = true;
+        PRINTF("[A] Application DONE\n");
         return 0; // done
     }
     else
     {
-        PRINT("[ERROR] Failed to create Application task\n");
+        PRINTF("[ERROR] Failed to create Application task\n");
     }
     return -100;
 }
