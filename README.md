@@ -225,6 +225,8 @@ Similarly OpenAPI is OpenCPU:<br>
 * It is used by Quectel - a manufacturer of GSM modules<br>
 * Unfortunately - Closed Source with writing peculiarities and underdeveloped SDK over the years<br>
 
+![openapi](https://raw.githubusercontent.com/Wiz-IO/LIB/master/images/openapi.jpg)
+
 and sorry for my bad English...
 
 >Here you can treat me to Coffee or 12 Year Old Whisky :)
