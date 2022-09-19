@@ -1,6 +1,8 @@
 # OpenAPI<br>
 _( will be more of an explanation than copy / paste code and the association with Arduino is as an example application )_
 
+By the way, there is a more elegant solution... ( coming soon )
+
 **Project Version 2.0.0**
 
 OpenAPI is the sharing of Kernel ( Firmware ) functions to Userware applications<br>
