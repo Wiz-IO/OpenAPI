@@ -77,7 +77,7 @@ TODO....
 Compilers have a perfect mechanism for compiling Position Independent Code, and we are only required to arrange the code.<br>
 When we include the -fPIC flag, the compiler adds several sections necessary for the relocation of shared objects<br>
 **.rel.dyn, .rel.dyn, .dynsym, .dynstr**<br>
-These are tables of addresses - which is located where in the application<br>
+These are tables of addresses - which, where is in the application<br>
 for example **.rel.dyn** is an array (table) for all shared objects with structure:
 ```c
 typedef struct {
