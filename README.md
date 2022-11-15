@@ -157,6 +157,20 @@ SECTIONS
     } > FLASH
     .................
 ```
+APP MAGIC and API VERSION are information that this is a user application,<br>
+APP ENTRY is the entry "reset" vector of the application itself<br>
+With the first two, we inform the kernel that this is indeed a userware application to be launched from the address APP ENTRY<br>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <br><hr>
