@@ -159,7 +159,29 @@ SECTIONS
 ```
 APP MAGIC and API VERSION are information that this is a user application,<br>
 APP ENTRY is the entry "reset" vector of the application itself<br>
-With the first two, we inform the kernel that this is indeed a userware application to be launched from the address APP ENTRY<br>
+With the first two, we inform the kernel that this is indeed a userware application to be launched from the address APP ENTRY<br><br>
+All that's left is to trick the compiler ... make it import the shared objects ... very easy<br>
+The compiler only needs to construct the relocation tables. <br>
+We create a single C file with all shared objects without their types, just a void foo(void) function<br>
+and compile it as -fPIC library<br>
+```
+void api_syscall(void){}
+void api_malloc(void){}
+void api_realloc(void){}
+void api_calloc(void){}
+void api_free(void){}
+....etc, all shared objects
+```
+
+```
+CC_OPTIONS=-mcpu=cortex-m4 -mthumb -msingle-pic-base -fPIC -Wall
+GCC_PATH=C:/Users/1124/.platformio/packages/toolchain-gccarmnoneeabi/bin/
+
+all:
+	@echo   * Creating OpenAPI PIC Library
+	$(GCC_PATH)arm-none-eabi-gcc $(CC_OPTIONS) -g -Os -c OpenAPI-shared.c -o OpenAPI-shared.o
+	$(GCC_PATH)arm-none-eabi-gcc -shared -Wl,-soname,libopenapi.a -nostdlib -o libopenapi.a OpenAPI-shared.o
+```
 
 
 
