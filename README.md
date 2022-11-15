@@ -71,9 +71,6 @@ which is shared for use by Userware Arduino applications
 
 <br><hr>
 
-TODO....
-
-
 Compilers have a perfect mechanism for compiling Position Independent Code, and we are only required to arrange the code.<br>
 When we include the -fPIC flag, the compiler adds several sections necessary for the relocation of shared objects<br>
 **.rel.dyn, .rel.dyn, .dynsym, .dynstr**<br>
@@ -182,8 +179,11 @@ all:
 	$(GCC_PATH)arm-none-eabi-gcc $(CC_OPTIONS) -g -Os -c OpenAPI-shared.c -o OpenAPI-shared.o
 	$(GCC_PATH)arm-none-eabi-gcc -shared -Wl,-soname,libopenapi.a -nostdlib -o libopenapi.a OpenAPI-shared.o
 ```
+We have the linker script and the library, it remains to compile the application - like a normal application, but with the -fPIC flag<br>
+Something complicated?
 
-
+**Kernel app loader**<br>
+TODO
 
 
 
