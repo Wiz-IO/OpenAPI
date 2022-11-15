@@ -92,8 +92,12 @@ Detailed information can be found on the web...<br>
 
 ![rel](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/USER-REL.jpg)
 
-
-
+As I shared above we are only asked to line up our code, and for this we need a modified two-part linker script<br>
+The second part is a normal script like for a static application<br>
+The first part begins with a header or information about the application and the addresses of certain sections,<br>
+and they are the standard .bss and .data to initialize our variables.<br>
+as well as the additional Position Independent Code tables, which we arrange immediately after the header<br>
+![head](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/USER-HEADER.jpg)
 
 
 
