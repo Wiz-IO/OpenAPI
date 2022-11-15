@@ -98,7 +98,65 @@ The first part begins with a header or information about the application and the
 and they are the standard .bss and .data to initialize our variables.<br>
 as well as the additional Position Independent Code tables, which we arrange immediately after the header<br>
 ![head](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/USER-HEADER.jpg)
+```
+SECTIONS
+{
+    . = ROM_BASE;
 
+/***** HEADER *****/
+    .initdata :
+    {
+        LONG( 0xFECAFECA );                 /* APP MAGIC    */
+        LONG( 0x12345678 );                 /* API VERSION  */
+        LONG((ABSOLUTE(app_entry + 1)));    /* APP ENTRY    */
+        LONG( APP_STACK );                  /* APP STACK optional */
+
+        LONG((ABSOLUTE( _data_load )));     /* copy .data */
+        LONG((ABSOLUTE( _data_start )));
+        LONG((ABSOLUTE( _data_end )));
+
+        LONG((ABSOLUTE( _bss_start )));     /* clear .bss */
+        LONG((ABSOLUTE( _bss_end )));
+
+        LONG((ABSOLUTE( _rel_dyn )));       /* ELF Relocation Table : Elf32_Rel    */
+        LONG((ABSOLUTE( _dyn_start )));     /* ELF Symbol Table     : Elf32_Sym    */
+        LONG((ABSOLUTE( _str_start )));     /* ELF String Table     : const char * */
+
+        /* reserved, align 64 bytes */
+        LONG(0);
+        LONG(0);
+        LONG(0);
+        LONG(0);
+    } > FLASH
+
+    .rel.dyn : /* ELF REL Relocation Table : Elf32_Rel */
+    {
+        _rel_dyn = .;
+        *(.rel.dyn)
+        _rel_dyn_end = .;
+    } > FLASH
+
+    .rel.plt : /* ELF JMPREL Relocation Table : Elf32_Rel */
+    {
+        _rel_plt = .;
+        *(.rel.plt)
+        _rel_plt_end = .;
+    } > FLASH
+
+    .dynsym :  /* ELF Symbol Table : Elf32_Sym */
+    {
+        _dyn_start = .;
+        *(.dynsym)
+        _dyn_end = .;
+    } > FLASH
+
+    .dynstr :  /* ELF String Table */
+    {
+        _str_start = .;
+        *(.dynstr)
+    } > FLASH
+    .................
+```
 
 
 <br><hr>
