@@ -69,10 +69,14 @@ For example: ARM Cortex M4 with several megabytes of ROM & RAM<br>
 Another example: a GSM LPWA NB-IoT module that integrates an Arduino Core,<br>
 which is shared for use by Userware Arduino applications
 
+<br><hr>
 
 TODO....
+Compilers have a perfect mechanism for compiling Position Independent Code, and we are only required to arrange the code.
 
 
+
+<br><hr>
 
 **Basic and simple !** ( watch in Youtube )
 
