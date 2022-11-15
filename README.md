@@ -85,8 +85,10 @@ typedef struct {
     Elf32_Word      r_info;
 } Elf32_Rel;
 ```
-where **r_offset** Identifies the location of the object to be adjusted.<br>
+where **r_offset** identifies the location of the object to be adjusted.<br>
 or the address of the shared object (function, variable...) in the application address space<br>
+and **r_info** identifies the patch type and its index in the ELF Symbol Table<br>
+Detailed information can be found on the web...<br>
 
 <br><hr>
 
