@@ -90,6 +90,13 @@ or the address of the shared object (function, variable...) in the application a
 and **r_info** identifies the patch type and its index in the ELF Symbol Table<br>
 Detailed information can be found on the web...<br>
 
+![rel](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/USER-REL.jpg)
+
+
+
+
+
+
 <br><hr>
 
 **Basic and simple !** ( watch in Youtube )
