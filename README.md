@@ -74,11 +74,19 @@ which is shared for use by Userware Arduino applications
 TODO....
 
 
-Compilers have a perfect mechanism for compiling Position Independent Code,<br> and we are only required to arrange the code.<br>
+Compilers have a perfect mechanism for compiling Position Independent Code, and we are only required to arrange the code.<br>
 When we include the -fPIC flag, the compiler adds several sections necessary for the relocation of shared objects<br>
 **.rel.dyn, .rel.dyn, .dynsym, .dynstr**<br>
-
-
+These are tables of addresses - which is located where in the application<br>
+for example **.rel.dyn** is an array (table) for all shared objects with structure:
+```c
+typedef struct {
+    Elf32_Addr      r_offset;
+    Elf32_Word      r_info;
+} Elf32_Rel;
+```
+where **r_offset** Identifies the location of the object to be adjusted.<br>
+or the address of the shared object (function, variable...) in the application address space<br>
 
 <br><hr>
 
