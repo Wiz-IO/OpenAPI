@@ -179,6 +179,7 @@ all:
 	$(GCC_PATH)arm-none-eabi-gcc $(CC_OPTIONS) -g -Os -c OpenAPI-shared.c -o OpenAPI-shared.o
 	$(GCC_PATH)arm-none-eabi-gcc -shared -Wl,-soname,libopenapi.a -nostdlib -o libopenapi.a OpenAPI-shared.o
 ```
+![library](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/lib.jpg)
 We have the linker script and the library, it remains to compile the application - like a normal application, but with the -fPIC flag<br>
 Something complicated?
 
