@@ -202,7 +202,7 @@ TODO
 [![OpenAPI](https://img.youtube.com/vi/2D3_3b4-PVo/0.jpg)](https://www.youtube.com/watch?v=2D3_3b4-PVo "OpenAPI DEMO")
 
 Resources:
-* RAM & ROM 8 bytes for shared functions ( for Arm or Thumb32 )
+* RAM & ROM a few for shared functions ( for Arm or Thumb32 )
 * Kernel control
 * Hidden information
 * Option for signed applications
