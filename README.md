@@ -191,6 +191,18 @@ Then we copy the data for section data and reset the bss section<br>
 Relocation is also not a big deal, this solution doesn't use MMU and we don't need complex address recalculation of shared objects<br>
 With the indices of the shared objects from the ELF REL Relocation Table we check ( strcmp() ) whether we have shared the searched object<br>
 and if yes: we overwrite its r_offset with the address of the real function<br>
+```c
+            switch (REL->r_info & 0xFF)
+            {
+            case R_ARM_GLOB_DAT:                               // variables
+            case R_ARM_JUMP_SLOT:                              // functions
+                *(uint32_t *)REL->r_offset = function_address; // replace address
+                break;
+            default:
+                PRINTF("[ERROR][API] REL TYPE: %d\n", REL->r_info & 0xFF);
+                return -12;
+            }
+```
 And finally we call APP ENTRY<br>
 **That's all Folks...**
 
