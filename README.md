@@ -206,7 +206,7 @@ and if yes: we overwrite its r_offset with the address of the real function<br>
 And finally we call APP ENTRY<br><br>
 **That's all Folks...**<br>
 
-NOTE: The OpenAPI folder contains an examples from a complex SDK Platform that I cannot share due to license restrictions
+NOTE:<br>The OpenAPI folder contains an examples from a complex SDK Platform that I cannot share due to license restrictions
 
 <br><hr>
 
