@@ -1,0 +1,37 @@
+api_variable
+api_constant
+
+///// COMMON
+api_syscall
+
+//// MEMORY
+api_malloc
+api_realloc
+api_calloc
+api_free
+
+///// ARDUINO
+yield
+millis
+micros
+delay
+delayMicroseconds
+adcMode
+pwmMode
+pinMode
+digitalRead
+digitalWrite
+digitalToggle
+analogRead
+analogWrite
+detachInterrupt
+attachInterrupt
+
+///// ARDUINO PERIPHERY
+drv_create
+drv_free
+drv_open
+drv_close
+drv_read
+drv_write
+drv_syscall
