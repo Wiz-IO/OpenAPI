@@ -180,7 +180,7 @@ all:
 	$(GCC_PATH)arm-none-eabi-gcc -shared -Wl,-soname,libopenapi.a -nostdlib -o libopenapi.a OpenAPI-shared.o
 ```
 ![library](https://raw.githubusercontent.com/Wiz-IO/OpenAPI/main/images/lib.jpg)
-We have the linker script and the library, it remains to compile the application - like a normal application, but with the -fPIC flag<br>
+We have the linker script and the library, it remains to compile the application - like a normal application, <br>but with the -fPIC flag<br>
 Something complicated?
 
 **Kernel Application loader**<br>
