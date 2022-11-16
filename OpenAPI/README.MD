@@ -1,0 +1,1 @@
+The OpenAPI folder contains an examples from a complex SDK Platform that I cannot share due to license restrictions
