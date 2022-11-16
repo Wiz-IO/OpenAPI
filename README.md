@@ -203,18 +203,8 @@ and if yes: we overwrite its r_offset with the address of the real function<br>
                 return -12;
             }
 ```
-And finally we call APP ENTRY<br>
+And finally we call APP ENTRY<br><br>
 **That's all Folks...**
-
-
-
-
-
-
-
-
-
-
 
 <br><hr>
 
