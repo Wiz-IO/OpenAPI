@@ -183,9 +183,9 @@ all:
 We have the linker script and the library, it remains to compile the application - like a normal application, but with the -fPIC flag<br>
 Something complicated?
 
-**Kernel app loader**<br>
+**Kernel Application loader**<br>
 
-Loaders are a few simple functions: check for valid app, initialize .data & .bss and relocate shared objects.<br>
+The Loader are a few simple functions: check for valid app, initialize .data & .bss and relocate shared objects.<br>
 The check in this example is simple - we check if a constant address in the flash contains<br>APP MAGIC and API VERSION and limit APP ENTRY
 Then we copy the data for section data and reset the bss section<br>
 Relocation is also not a big deal, this solution doesn't use MMU and we don't need complex address recalculation of shared objects<br>
